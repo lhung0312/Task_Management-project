@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const {
   getAllUserService,
+  getUserByIdService,
   postCreateUserService,
   putUpdateUserService,
   deleteUserByIdService,
@@ -10,6 +11,14 @@ const getAllUser = async (req, res) => {
   return res.status(200).json({
     errorCode: 0,
     data: users,
+  });
+};
+const getUserById = async (req, res) => {
+  const _id = req.params.id;
+  const user = await getUserByIdService(_id);
+  return res.status(200).json({
+    errorCode: 0,
+    data: user,
   });
 };
 const postCreateUser = async (req, res) => {
@@ -45,6 +54,7 @@ const deleteUserById = async (req, res) => {
 
 module.exports = {
   getAllUser,
+  getUserById,
   postCreateUser,
   putUpdateUser,
   deleteUserById,
