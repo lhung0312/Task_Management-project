@@ -24,9 +24,9 @@ const getUserById = async (req, res) => {
 const postCreateUser = async (req, res) => {
   let email = req.body.email;
   let name = req.body.name;
-  let city = req.body.city;
-  const user = await postCreateUserService(email, name, city);
-  return res.status(200).json({
+  let password = req.body.password;
+  const user = await postCreateUserService(email, name, password);
+  return res.status(201).json({
     errorCode: 0,
     data: user,
   });
@@ -34,10 +34,10 @@ const postCreateUser = async (req, res) => {
 const putUpdateUser = async (req, res) => {
   let email = req.body.email;
   let name = req.body.name;
-  let city = req.body.city;
+  let password = req.body.password;
   let id = req.body.id;
-  const newUser = await putUpdateUserService(email, name, city, id);
-  return res.status(201).json({
+  const newUser = await putUpdateUserService(email, name, password, id);
+  return res.status(200).json({
     errorCode: 0,
     data: newUser,
   });

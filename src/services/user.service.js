@@ -5,10 +5,10 @@ const getAllUserService = async () => {
 const getUserByIdService = async (_id) => {
   return await User.find({ _id });
 };
-const postCreateUserService = async (email, name, city) => {
-  return await User.create({ email, name, city });
+const postCreateUserService = async (email, name, password) => {
+  return await User.create({ email, name, password });
 };
-const putUpdateUserService = async (email, name, city, id) => {
+const putUpdateUserService = async (email, name, password, id) => {
   return await User.updateOne({ _id: id }, { email, name, city });
 };
 const deleteUserByIdService = async (id) => {
