@@ -1,22 +1,57 @@
-const { json } = require("body-parser");
 const path = require("path");
 
-const UploadSingleFileService = async (fileObject) => {
+const singleFileService = async (fileObject) => {
   //path extension
-  const baseName = path.basename(fileObject.name);
-  const extName = path.extname(fileObject.name);
-  const resolvePath = path.resolve(__dirname, "../public/images");
-  const finalNameFile = `${baseName}_${Date.now()}${extName}`;
-  const uploadPath = `${resolvePath}/${finalNameFile}`;
-
+  let baseName = path.basename(fileObject.name);
+  let extName = path.extname(fileObject.name);
+  let resolvePath = path.resolve(__dirname, "../public/images");
+  let finalNameFile = `${baseName}_${Date.now()}${extName}`;
+  let uploadPath = `${resolvePath}/${finalNameFile}`;
   try {
     await fileObject.mv(uploadPath);
-    return finalNameFile;
+    return {
+      status: "success",
+      path: finalNameFile,
+      error: null,
+    };
   } catch (error) {
     return {
-      err: JSON.stringify(error),
+      status: "failed",
+      path: null,
+      error: JSON.stringify(error),
     };
   }
 };
+const multipleFilesService = async (filesArray) => {
+  try {
+    let resultArray = [];
+    let countElement = 0;
+    for (let i = 0; i < filesArray.length; i++) {
+      let baseName = path.basename(filesArray[i].name);
+      let extName = path.extname(filesArray[i].name);
+      let resolvePath = path.resolve(__dirname, "../public/images");
+      let finalNameFile = `${baseName}_${Date.now()}${extName}`;
+      let uploadPath = `${resolvePath}/${finalNameFile}`;
+      try {
+        await filesArray[i].mv(uploadPath);
+        resultArray.push({
+          status: "success",
+          path: filesArray[i].name,
+          error: null,
+        });
+        countElement++;
+      } catch (error) {
+        resultArray.push({
+          status: "failed",
+          path: null,
+          err: JSON.stringify(error),
+        });
+      }
+    }
+    return { countElement: countElement, resultArray: resultArray };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-module.exports = UploadSingleFileService;
+module.exports = { multipleFilesService, singleFileService };

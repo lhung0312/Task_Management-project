@@ -1,16 +1,24 @@
-const UploadSingleFileService = require("../services/file.service");
+const {
+  multipleFilesService,
+  singleFileService,
+} = require("../services/file.service");
 
-const postUploadSingleFile = async (req, res) => {
+const postUploadFiles = async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
-    res.status(400).send("No files were uploaded.");
-    return;
+    return res.status(400).send("No files were uploaded.");
   }
-  const fileObject = req.files.image;
-
-  let file = await UploadSingleFileService(fileObject);
-  return res.status(200).json({
-    errorCode: 0,
-    data: `upload success imageFile: ${file}`,
-  });
+  if (Array.isArray(req.files.image) === false) {
+    let file = await singleFileService(req.files.image);
+    return res.status(200).json({
+      errorCode: 0,
+      data: file,
+    });
+  } else {
+    let files = await multipleFilesService(req.files.image);
+    return res.status(200).json({
+      errorCode: 0,
+      data: files,
+    });
+  }
 };
-module.exports = postUploadSingleFile;
+module.exports = postUploadFiles;
