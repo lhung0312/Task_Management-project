@@ -1,4 +1,3 @@
-const User = require("../models/user");
 const {
   getAllUserService,
   getUserByIdService,
@@ -22,10 +21,7 @@ const getUserById = async (req, res) => {
   });
 };
 const postCreateUser = async (req, res) => {
-  let email = req.body.email;
-  let name = req.body.name;
-  let password = req.body.password;
-  const user = await postCreateUserService(email, name, password);
+  const user = await postCreateUserService(req, res);
   return res.status(201).json({
     errorCode: 0,
     data: user,
@@ -34,9 +30,8 @@ const postCreateUser = async (req, res) => {
 const putUpdateUser = async (req, res) => {
   let email = req.body.email;
   let name = req.body.name;
-  let password = req.body.password;
   let id = req.body.id;
-  const newUser = await putUpdateUserService(email, name, password, id);
+  const newUser = await putUpdateUserService(email, name, id);
   return res.status(200).json({
     errorCode: 0,
     data: newUser,

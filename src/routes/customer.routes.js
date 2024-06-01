@@ -1,20 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const {
-  //   getAllCustomer,
-  //   getCustomerById,
+  getAllCustomer,
   postCreateArrayCustomer,
   postCreateCustomer,
-} =
-  //   putUpdateCustomer,
-  //   deleteCustomerById,
-  require("../controllers/customer.controller");
-// router.get("", getAllCustomer);
-// router.get("/:id", getCustomerById);
+  putUpdateCustomer,
+  deleteACustomer,
+} = require("../controllers/customer.controller");
+router.get("", getAllCustomer);
 router.post("", postCreateCustomer);
 router.post("/array", postCreateArrayCustomer);
 
-// router.put("", putUpdateCustomer);
-// router.delete("/:id", deleteCustomerById);
+router.put("", putUpdateCustomer);
+router.delete("/:id", deleteACustomer);
 
 module.exports = router;

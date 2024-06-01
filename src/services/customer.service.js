@@ -1,4 +1,3 @@
-const { ReturnDocument } = require("mongodb");
 const Customer = require("../models/customer");
 
 const createCustomerService = async (
@@ -29,4 +28,44 @@ const createArrayCustomerService = async (arr) => {
     return null;
   }
 };
-module.exports = { createCustomerService, createArrayCustomerService };
+const allCustomerService = async () => {
+  try {
+    return await Customer.find();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+const updateCustomerService = async (
+  _id,
+  name,
+  phone,
+  email,
+  description,
+  image
+) => {
+  try {
+    return await Customer.updateOne(
+      { _id },
+      { name, phone, email, description, image }
+    );
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+const deleteCustomerService = async (id) => {
+  try {
+    return await Customer.deleteById(id);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+module.exports = {
+  createCustomerService,
+  createArrayCustomerService,
+  allCustomerService,
+  updateCustomerService,
+  deleteCustomerService,
+};
