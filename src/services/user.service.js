@@ -5,7 +5,7 @@ const getAllUserService = async () => {
   return await User.find({}).select("-password");
 };
 const getUserByIdService = async (_id) => {
-  return await User.find({ _id }).select("-password");
+  return await User.findOne({ _id }).select("-password");
 };
 
 const createHashPassword = async (password) => {
