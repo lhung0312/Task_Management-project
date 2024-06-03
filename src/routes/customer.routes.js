@@ -10,7 +10,6 @@ const {
 router.get("", getAllCustomer);
 router.post("", postCreateCustomer);
 router.post("/array", postCreateArrayCustomer);
-
 router.put("", putUpdateCustomer);
 router.delete("/:id", deleteACustomer);
 

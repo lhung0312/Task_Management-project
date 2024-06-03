@@ -5,6 +5,7 @@ const {
   updateCustomerService,
   deleteCustomerService,
 } = require("../services/customer.service");
+
 const {
   multipleFilesService,
   singleFileService,
@@ -45,7 +46,16 @@ const postCreateArrayCustomer = async (req, res) => {
   }
 };
 const getAllCustomer = async (req, res) => {
-  let allCustomer = await allCustomerService();
+  let limit = req.query.limit;
+  let page = req.query.page;
+
+  let allCustomer;
+  if (page && limit) {
+    allCustomer = await allCustomerService(page, limit, req.query);
+  } else {
+    allCustomer = await allCustomerService();
+  }
+
   return res.status(200).json({
     errorCode: 0,
     data: allCustomer,

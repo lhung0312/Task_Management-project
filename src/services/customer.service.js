@@ -1,4 +1,5 @@
 const Customer = require("../models/customer");
+const aqp = require("api-query-params");
 
 const createCustomerService = async (
   name,
@@ -28,9 +29,24 @@ const createArrayCustomerService = async (arr) => {
     return null;
   }
 };
-const allCustomerService = async () => {
+const allCustomerService = async (page, limit, queryString) => {
   try {
-    return await Customer.find();
+    let results;
+    if (page && limit) {
+      const { filter, sort, projection, population } = aqp(queryString);
+      delete filter.page;
+      const offset = (page - 1) * limit;
+      results = await Customer.find(filter)
+        .skip(offset)
+        .limit(limit)
+        .sort(sort)
+        .select(projection)
+        .populate(population)
+        .exec();
+    } else {
+      results = await Customer.find();
+    }
+    return results;
   } catch (error) {
     console.log(error);
     return null;
