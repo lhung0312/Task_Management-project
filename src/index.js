@@ -6,12 +6,13 @@ const userRoutes = require("./routes/user.routes");
 const fileRoutes = require("./routes/file.routes");
 const customerRoutes = require("./routes/customer.routes");
 const projectRoutes = require("./routes/project.routes");
+const taskRoutes = require("./routes/task.routes");
 
 const authRoutes = require("./auth/auth.routes");
 const passport = require("./auth/localStrategy");
 const isAuthMiddleWare = require("./middlewares/isAuth.middleware");
 const fileUpload = require("express-fileupload");
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 
 //config req.body
 app.use(express.json());
@@ -34,7 +35,7 @@ app.use("/api/files", isAuthMiddleWare, fileRoutes);
 app.use("/api/customers", isAuthMiddleWare, customerRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
-// app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks", taskRoutes);
 
 (async () => {
   try {

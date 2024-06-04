@@ -54,6 +54,16 @@ const createProjectService = async (data) => {
     }
     return project;
   }
+  if (data.type === "ADD-TASK") {
+    let project = await Project.findOne({ _id: data.projectId });
+    // console.log("data.tasksArray: ", data.tasksArray);
+    const taskLength = data.tasksArray.length;
+    for (let i = 0; i < taskLength; i++) {
+      await project.tasks.push(data.tasksArray[i]);
+    }
+    project.save();
+    return project;
+  }
 };
 
 const deleteProjectByIdService = async (id) => {
