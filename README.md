@@ -58,13 +58,13 @@
 
 ## Usage
    
-   \ Start the development server:
-   ```sh
+      Start the development server:
+      ```sh
       npm run dev
-   ```
-   \ Open your browser and visit:
-    http://localhost:3000
+      ```
+      Open your browser and visit:
+       http://localhost:3000
    
  ## Contact
  
-   \ For any questions or suggestions, feel free to reach out via email: info.tuanhung@gmail.com
+      For any questions or suggestions, feel free to reach out via email: info.tuanhung@gmail.com
