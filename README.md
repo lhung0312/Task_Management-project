@@ -4,6 +4,15 @@
 
 `task_management-project` is a task management application that helps users organize and track their daily tasks efficiently. The application is developed using the ExpressJs framework, employing a stateful session model and Joi for input validation.
 
+## Technologies Used
+- **ExpressJs**: Web framework for Node.js
+- **PassportJs**: Authentication middleware for Node.js
+- **Express-Session**: Middleware for session management
+- **MongoDB**: NoSQL database
+- **Mongoose**: MongoDB object modeling for Node.js
+- **Joi**: Schema description and data validation
+- **Bcryptjs**: Library for hashing passwords
+
 ## Features
 
 - Check username and password via Local Strategy
