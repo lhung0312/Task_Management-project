@@ -57,15 +57,14 @@
    ```
 
 ## Usage
-
-   To run the application in development mode:
-   Start the development server:
+   
+   - Start the development server:
    ```sh
    npm run dev
    ```
-   Open your browser and visit:
+   - Open your browser and visit:
    http://localhost:3000
    
  ## Contact
  
-   For any questions or suggestions, feel free to reach out via email: info.tuanhung@gmail.com
+   - For any questions or suggestions, feel free to reach out via email: info.tuanhung@gmail.com
