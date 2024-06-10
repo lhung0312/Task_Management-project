@@ -36,17 +36,25 @@
    git clone https://github.com/username/task_management-project.git
    ```
 2. Navigate to the project directory:
+   ```sh
    cd task_management-project
-3. Install the necessary libraries:
+   ```
+4. Install the necessary libraries:
+   ```sh
    npm install
-4. Set up environment variables:
+   ```
+5. Set up environment variables:
    Create a .env file from the provided .env.example:
+   ```sh
    cp .env.example .env
+   ```
    Update the .env file with your configuration settings.
 
-Usage
-To run the application in development mode:
-Start the development server:
-npm run dev
-Open your browser and visit:
-http://localhost:3000
+## Usage
+   To run the application in development mode:
+   Start the development server:
+   ```sh
+   npm run dev
+   ```
+   Open your browser and visit:
+   http://localhost:3000
