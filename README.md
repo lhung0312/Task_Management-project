@@ -45,6 +45,7 @@
    npm install
    ```
 5. Set up environment variables:
+
     Create a .env file from the provided .env.example and update it with your configuration settings:
    ```sh
    PORT = 3000
