@@ -59,11 +59,11 @@
 ## Usage
    
  1. Start the development server:
- 2. 
+ 
     ```sh
     npm run dev
     ```
- 3. Open your browser and visit:
+ 2. Open your browser and visit:
     http://localhost:3000
    
  ## Contact
