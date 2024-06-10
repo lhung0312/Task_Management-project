@@ -34,7 +34,7 @@
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/username/task_management-project.git
+   git clone https://github.com/lhung0312/task_management-project.git
    ```
 2. Navigate to the project directory:
    ```sh
