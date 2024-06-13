@@ -7,10 +7,15 @@ const {
   putUpdateUser,
   deleteUserById,
 } = require("../controllers/user.controller");
+const {
+  validatesIsValidId,
+  validateCreateUser,
+  validateUpdateUser,
+} = require("../validations/user.validation");
 router.get("", getAllUser);
-router.get("/:id", getUserById);
-router.post("", postCreateUser);
-router.put("", putUpdateUser);
-router.delete("/:id", deleteUserById);
+router.get("/:id", validatesIsValidId, getUserById);
+router.post("", validateCreateUser, postCreateUser);
+router.put("", validateUpdateUser, putUpdateUser);
+router.delete("/:id", validatesIsValidId, deleteUserById);
 
 module.exports = router;
